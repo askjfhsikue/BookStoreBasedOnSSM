@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--这里对dao层接口的实现-->
+<mapper namespace="com.bookstore.dao.ShoppingCartDao"><!--namespace  后面接的是接口路径-->
+    <select id="selectBook" resultType="ShoppingCart" parameterType="int"><!--id要和dao层接口里面的方法名相同 ， resultType 是返回类型，parameterType是传入参数的类型-->
+        select *
+        from ShoppingCart
+        where bookId = #{bookId}
+    </select>
+
+    <insert id="addBookToShoppingCart">
+        insert into ShoppingCart(id, bookId, bookName, bookNum)
+        value(#{id},#{bookId},#{bookName},#{bookNum})
+    </insert>
+
+</mapper>
